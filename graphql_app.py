@@ -85,41 +85,12 @@ app.layout = html.Div([
                 )
             ]
         ),
-        html.H4("Use RTH?"),
-        html.Div(
-            children=[
-                daq.ToggleSwitch(
-                    id='use-rth',
-                    value=False
-                )
-            ]
-        ),
-        html.H4("Enter a currency pair:"),
-        html.P(
-            children=[
-                "See the various currency pairs here: ",
-                html.A(
-                    "currency pairs",
-                    href=('https://www.interactivebrokers.com/en/index.php?f'
-                          '=2222&exch=ibfxpro&showcategories=FX')
-                )
-            ]
-        ),
-        # Currency pair text input, within its own div.
-        html.Div(
-            # The input object itself
-            ["Input Currency: ", dcc.Input(
-                id='currency-input', value='AUD.CAD', type='text'
-            )],
-            # Style it so that the submit button appears beside the input.
-            style={'display': 'inline-block', 'padding-top': '5px'}
-        ),
         # Submit button
         html.Button('Submit', id='submit-button', n_clicks=0),
         # Div for initial instructions and the updated info once submit is pressed
         html.Div(
             id='currency-output',
-            children='Enter a currency code and press submit'),
+            children='Enter a required code and press submit'),
     ],
         style={'width': '365px', 'display': 'inline-block'}
     ),
@@ -184,7 +155,7 @@ app.layout = html.Div([
         value='BUY'
     ),
     # Text input for the currency pair to be traded
-    dcc.Input(id='trade-currency', value='AUDCAD', type='text'),
+    dcc.Input(id='trade-currency', value='Stock-Code', type='text'),
     # Numeric input for the trade amount
     dcc.Input(id='trade-amt', value='20000', type='number'),
     # Submit button for the trade
